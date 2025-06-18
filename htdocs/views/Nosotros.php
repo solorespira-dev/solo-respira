@@ -1,13 +1,9 @@
-<?php
-session_start();
-require_once 'conexion.php';
-?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Donaciones - Fundación Fibrosis Quística</title>
+  <title>Solo Respira - Fundación Fibrosis Quística</title>
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- FontAwesome para íconos -->
@@ -19,7 +15,7 @@ require_once 'conexion.php';
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg text-light bg-light text-uppercase shadow-sm custom-navbar">
     <div class="container">
-      <a class="navbar-brand" href="index.php">
+      <a class="navbar-brand" href="#">
         <img src="images/LOGO SOLO RESPIRA.png" alt="Logo Solo Respira" class="img-logo">
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
@@ -58,74 +54,68 @@ require_once 'conexion.php';
     </div>
   </nav>
   <!-- Fin Navbar -->
-
-  <!-- Sección Hero -->
-  <header class="hero-section" style="background-image: url('images/pexels-pixabay-236380.jpg'); position: relative;">
-    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.042); z-index: 1;"></div>
-    <div class="container-1" style="position: relative; z-index: 2;">
-        <div class="box-info">
-            <h1>CONTÁCTANOS</h1>
-            <div class="data" style="text-align: left;">
-                <p><i class="fas fa-map-marker-alt"></i> Maracay, Edo. Aragua, VE</p>
-                <p><i class="fas fa-envelope"></i> fundacionsolorespira@gmail.com</p>
-                <p><i class="fas fa-phone"></i> +58 414 460 3879</p>
+  <!-- Sección Hero (Portada) -->
+  <header class="hero-section d-flex align-items-center" style="background-image: url('images/pexels-pixabay-236380.jpg');">
+    <div class="container text-center">
+      <main class="py-1">
+        <div class="accordion" id="accordionPanelsStayOpenExample">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                LA FUNDACIÓN
+              </button>
+            </h2>
+            <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+              <div class="accordion-body">
+                  Establecida el 16 de febrero de 2021 en Maracay,
+                  Venezuela, esta organización sin fines de lucro se
+                  dedica a apoyar a personas afectadas por la fibrosis
+                  quística. Su labor incluye la gestión de medicamentos,
+                  la capacitación de familias, la investigación y la
+                  realización de actividades de concienciación, con el
+                  objetivo de mejorar su calidad de vida y bienestar
+                  integral.
+               </div>
             </div>
-            <div class="links">
-                <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+                MISIÓN
+              </button>
+            </h2>
+            <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
+              <div class="accordion-body">
+                <strong>Brindar apoyo integral a pacientes con fibrosis quística y sus
+                  familias,</strong> promoviendo su calidad de vida mediante la
+                sensibilización social, la gestión de recursos esenciales, la
+                atención psicológica y médica, y la construcción de alianzas
+                estratégicas que fortalezcan nuestra labor.
+              </div>
             </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+                VISIÓN
+              </button>
+            </h2>
+            <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
+              <div class="accordion-body">
+                <strong>Ser un referente regional</strong> en el tratamiento integral de la
+                fibrosis quística, garantizando el acceso a medicamentos de
+                alto costo, atención multidisciplinaria de calidad y
+                hospitalizaciones dignas, transformando la vida de los
+                pacientes y sus familias con un modelo ejemplar en el campo
+                de la salud</div>
+            </div>
+          </div>
         </div>
-        <form action="https://formsubmit.co/705a130deea5a962c38bfa4a3c12b9d9" method="POST">
-            <div class="input-box">
-                <input type="text" name="name" required placeholder="Nombre y apellido">
-                <i class="fas fa-user"></i>
-            </div>
-            <div class="input-box">
-                <input type="email" required name="email" placeholder="Correo electrónico">
-                <i class="fas fa-envelope"></i>
-            </div>
-            <div class="input-box">
-                <input type="text" name="subject" placeholder="Asunto">
-                <i class="fas fa-pen"></i>
-            </div>
-            <div class="input-box">
-                <textarea name="comments" placeholder="Escribe tu mensaje..."></textarea>
-            </div>
-            <button type="submit">Enviar mensaje</button>
-
-            <input type="hidden" name="_captcha" value="false">
-        </form>
+      </main>
     </div>
-
-    <!-- Modal de confirmación -->
-<div class="modal fade" id="confirmacionModal" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">
-          <i class="fas fa-paper-plane me-2"></i> Mensaje enviado
-        </h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body text-center py-4">
-        <div class="mb-3">
-          <i class="fas fa-check-circle text-success fa-4x"></i>
-        </div>
-        <h4 class="mb-2 text-dark">¡Gracias por contactarte con nosotros!</h4>
-        <p class="mb-0 text-dark">Tendrás una respuesta lo más pronto posible.</p>
-      </div>
-      <div class="modal-footer justify-content-center border-0">
-        <button type="button" class="btn btn-primary px-4" data-bs-dismiss="modal">Aceptar</button>
-      </div>
-    </div>
-  </div>
-</div>
-    <header class="hero-overlay"></header>
+    <div class="hero-overlay"></div>
   </header>
   <!-- Fin Sección Hero -->
-   
   <!-- Footer -->
   <footer class="footer text-light pt-4">
     <div class="container">
@@ -165,31 +155,5 @@ require_once 'conexion.php';
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <!-- JS Personalizado -->
   <script src="js/main.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const form = document.querySelector('form');
-      
-      form.addEventListener('submit', function(e) {
-        e.preventDefault(); // Detenemos el envío temporalmente
-        
-        // Validación básica
-        if (form.checkValidity()) {
-          // Mostrar modal
-          const modal = new bootstrap.Modal(document.getElementById('confirmacionModal'));
-          modal.show();
-          
-          // Enviar formulario después de 3 segundos
-          setTimeout(() => {
-            form.submit(); 
-          }, 3000);
-          
-          // Limpiar formulario
-          form.reset();
-        } else {
-          form.reportValidity();
-        }
-      });
-    });
-  </script>
 </body>
 </html>

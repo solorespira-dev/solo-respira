@@ -15,7 +15,7 @@
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg text-light bg-light text-uppercase shadow-sm custom-navbar">
     <div class="container">
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" href="index.php">
         <img src="images/LOGO SOLO RESPIRA.png" alt="Logo Solo Respira" class="img-logo">
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
