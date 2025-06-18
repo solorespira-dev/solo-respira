@@ -12,7 +12,7 @@ if (isset($_GET['success'])) {
 ?>
 
 <!-- Llamado del header -->
-<?php include __DIR__ . '/includes/header.php'; ?>
+<?php include __DIR__ . '/../../includes/header.php'; ?>
  
   <?php
   include('conexion.php');
@@ -176,4 +176,4 @@ eventClick:function(event){
 </script>
 
 <!-- Llamado del footer -->
-<?php include __DIR__ . '/includes/footer.php'; ?>
+<?php include __DIR__ . '/../../includes/footer.php'; ?>

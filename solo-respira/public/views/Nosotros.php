@@ -1,8 +1,8 @@
 <!-- Llamado del header -->
-<?php include __DIR__ . '/includes/header.php'; ?>
+<?php include __DIR__ . '/../../includes/header.php'; ?>
 
   <!-- Sección Hero (Portada) -->
-  <header class="hero-section d-flex align-items-center" style="background-image: url('images/pexels-pixabay-236380.jpg');">
+  <header class="hero-section d-flex align-items-center" style="background-image: url('../assets/images/pexels-pixabay-236380.jpg');">
     <div class="container text-center">
       <main class="py-1">
         <div class="accordion" id="accordionPanelsStayOpenExample">
@@ -65,4 +65,4 @@
   <!-- Fin Sección Hero -->
 
 <!-- Llamado del footer -->
-<?php include __DIR__ . '/includes/footer.php'; ?>
+<?php include __DIR__ . '/../../includes/footer.php'; ?>

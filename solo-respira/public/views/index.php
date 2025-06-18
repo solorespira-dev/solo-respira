@@ -3,10 +3,10 @@ session_start();
 ?>
 
 <!-- Llamado del header -->
-<?php include __DIR__ . '/includes/header.php'; ?>
+<?php include __DIR__ . '/../../includes/header.php'; ?>
 
   <!-- Sección Hero (Portada) -->
-  <header class="hero-section d-flex align-items-center" style="background-image: url('images/pexels-pixabay-236380.jpg');">
+  <header class="hero-section d-flex align-items-center" style="background-image: url('../assets/images/pexels-pixabay-236380.jpg');">
     <div class="container text-center text-light">
       <h1 class="display-4 text-uppercase">Fundación Fibrosis Quística<br>Solo Respira</h1>
       <p class="lead my-4">Apoyamos y brindamos esperanza a pacientes y familiares de Fibrosis Quística en Venezuela a través de Donaciones y Apadrinamiento.</p>
@@ -275,4 +275,4 @@ session_start();
   <!-- Fin Sección Blog -->
 
 <!-- Llamado del footer -->
-<?php include __DIR__ . '/includes/footer.php'; ?>
+<?php include __DIR__ . '/../../includes/footer.php'; ?>

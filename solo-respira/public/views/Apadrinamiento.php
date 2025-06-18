@@ -1,5 +1,5 @@
 <!-- Llamado del header -->
-<?php include __DIR__ . '/includes/header.php'; ?>
+<?php include __DIR__ . '/../../includes/header.php'; ?>
 
 <!-- CSS Personalizado de Apadrinamiento -->
 <style>
@@ -1372,4 +1372,4 @@ document.getElementById('btnEnviarApadrinamiento').addEventListener('click', asy
 </script>
 
 <!-- Llamado del footer -->
-<?php include __DIR__ . '/includes/footer.php'; ?>
+<?php include __DIR__ . '/../../includes/footer.php'; ?>

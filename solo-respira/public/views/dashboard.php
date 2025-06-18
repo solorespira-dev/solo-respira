@@ -1,13 +1,15 @@
 <?php
 session_start();
 
+// Conexión
+include __DIR__ . '/../../config/conexion.php';
+
+require_once __DIR__ . '/../../lib/auth.php';
+
 // Mostrar errores (solo para pruebas)
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-
-// Conexión
-include 'conexion.php';
 
 if (!$conexion) {
     die("Error al conectar con la base de datos.");

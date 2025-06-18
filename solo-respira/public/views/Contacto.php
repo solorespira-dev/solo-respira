@@ -4,7 +4,7 @@ require_once 'conexion.php';
 ?>
 
 <!-- Llamado del header -->
-<?php include __DIR__ . '/includes/header.php'; ?>
+<?php include __DIR__ . '/../../includes/header.php'; ?>
 
 
   <!-- Sección Hero -->

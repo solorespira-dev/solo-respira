@@ -1,54 +1,49 @@
 <?php
-require_once 'conexion.php';
+require_once __DIR__ . '/../../config/conexion.php';
 
 $mensaje = '';
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $nombre = trim($_POST["nombre"]);
-    $email = trim($_POST["email"]);
+    $email = filter_var(trim($_POST["email"]), FILTER_VALIDATE_EMAIL);
     $contraseña = password_hash($_POST["contraseña"], PASSWORD_DEFAULT);
     $rol = $_POST["rol"];
 
-    // Verificar si el correo ya está registrado
-    $stmt = $conexion->prepare("SELECT id FROM usuarios WHERE email = ?");
-    $stmt->bind_param("s", $email);
-    $stmt->execute();
-    $stmt->store_result();
+    if ($email && !empty($nombre) && !empty($_POST["contraseña"]) && !empty($rol)) {
+        $stmt = $conexion->prepare("SELECT id FROM usuarios WHERE email = ?");
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $stmt->store_result();
 
-    if ($stmt->num_rows > 0) {
-        $mensaje = "Este correo ya está registrado.";
-    } else {
-        $stmt->close();
-        $stmt = $conexion->prepare("INSERT INTO usuarios (nombre, email, contraseña, rol) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param("ssss", $nombre, $email, $contraseña, $rol);
-
-        if ($stmt->execute()) {
-            header("Location: InicioSesion.php");
-            exit;
+        if ($stmt->num_rows > 0) {
+            $mensaje = "Este correo ya está registrado.";
         } else {
-            $mensaje = "Error al registrar el usuario.";
-        }
-    }
+            $stmt->close();
+            $stmt = $conexion->prepare("INSERT INTO usuarios (nombre, email, contraseña, rol) VALUES (?, ?, ?, ?)");
+            $stmt->bind_param("ssss", $nombre, $email, $contraseña, $rol);
 
-    $stmt->close();
-    $conexion->close();
+            if ($stmt->execute()) {
+                header("Location: InicioSesion.php?registrado=1");
+                exit;
+            } else {
+                $mensaje = "Error al registrar el usuario.";
+            }
+        }
+
+        $stmt->close();
+        $conexion->close();
+    } else {
+        $mensaje = "Debes completar todos los campos correctamente.";
+    }
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Registro</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css"> <!-- Incluye tu CSS personalizado -->
-</head>
-<body class="bg-light">
+<?php include __DIR__ . '/../../includes/header.php'; ?>
 
 <div class="container mt-5">
     <div class="text-center mb-4">
         <a href="index.php">
-            <img src="images/LOGO SOLO RESPIRA.png" alt="Logo" style="max-height: 100px;">
+            <img src="../assets/images/LOGO SOLO RESPIRA.png" alt="Logo" style="max-height: 100px;">
         </a>
     </div>
 
@@ -58,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
         <div class="card-body">
             <?php if ($mensaje): ?>
-                <div class="alert alert-danger"><?= $mensaje ?></div>
+                <div class="alert alert-danger"><?= htmlspecialchars($mensaje) ?></div>
             <?php endif; ?>
 
             <form method="POST" action="">
@@ -85,7 +80,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </select>
                 </div>
 
-                <button type="submit" class="btn btn-personal btn-block">Registrarse</button>
+                <button type="submit" class="btn btn-primary btn-block">Registrarse</button>
             </form>
 
             <div class="text-center mt-3">
@@ -95,5 +90,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>
 </div>
 
-</body>
-</html>
+<?php include __DIR__ . '/../../includes/footer.php'; ?>
+
