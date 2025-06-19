@@ -1,10 +1,9 @@
 <?php
-session_start();
+require_once __DIR__ . '/../../lib/auth.php'; // Esto inicia sesión y carga funciones
+redirectIfNotLoggedIn(); // Redirige si no hay sesión
 
 // Conexión
-include __DIR__ . '/../../config/conexion.php';
-
-require_once __DIR__ . '/../../lib/auth.php';
+require_once __DIR__ . '/../../config/conexion.php';
 
 // Mostrar errores (solo para pruebas)
 ini_set('display_errors', 1);
@@ -15,15 +14,9 @@ if (!$conexion) {
     die("Error al conectar con la base de datos.");
 }
 
-// Verificar sesión
-if (!isset($_SESSION['email'])) {
-    header("Location: IniciaSesion.php");
-    exit;
-}
-
-
-$email = $_SESSION['email'];
-$nombre = isset($_SESSION['nombre']) ? $_SESSION['nombre'] : $email;
+// Obtener datos del usuario autenticado
+$email = $_SESSION['usuario']['email'];
+$nombre = $_SESSION['usuario']['nombre'];
 
 // Obtener ID del usuario
 $queryUsuario = $conexion->prepare("SELECT id FROM usuarios WHERE email = ?");
@@ -40,6 +33,9 @@ $queryDonaciones->execute();
 $resultDonaciones = $queryDonaciones->get_result();
 $rowDonaciones = $resultDonaciones->fetch_assoc();
 $totalDonado = $rowDonaciones['total'] ?? 0;
+
+// Obtener próximo evento (si se desea)
+$evento = null; // Aquí se puede agregar lógica
 
 ?>
 

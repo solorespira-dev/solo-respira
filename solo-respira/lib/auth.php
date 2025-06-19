@@ -6,6 +6,44 @@ if (session_status() === PHP_SESSION_NONE) {
 
 require_once __DIR__ . '/../config/conexion.php';
 
+// -----------------------------
+// Funciones de control de acceso
+// -----------------------------
+
+/**
+ * Verifica si hay un usuario logueado
+ */
+function isLoggedIn() {
+    return isset($_SESSION['usuario']);
+}
+
+/**
+ * Verifica si el usuario logueado tiene rol 'admin'
+ */
+function isAdmin() {
+    return isLoggedIn() && $_SESSION['usuario']['rol'] === 'admin';
+}
+
+/**
+ * Redirige si no hay sesión activa
+ */
+function redirectIfNotLoggedIn() {
+    if (!isLoggedIn()) {
+        header("Location: InicioSesion.php");
+        exit();
+    }
+}
+
+/**
+ * Redirige si no es administrador
+ */
+function redirectIfNotAdmin() {
+    if (!isAdmin()) {
+        header("Location: index.php");
+        exit();
+    }
+}
+
 // Registro de usuario
 if (isset($_POST['register'])) {
     $nombre = trim($_POST['name']);
