@@ -138,6 +138,7 @@ $evento = null; // Aquí se puede agregar lógica
 </div>
 
 <div class="content">
+    <?php include __DIR__ . '/../../includes/alerts.php'; ?>
     <h2 class="text-primary">Bienvenido, <?php echo htmlspecialchars($nombre); ?>.</h2>
 
     <div class="row mt-4">

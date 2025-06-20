@@ -2,17 +2,23 @@
 session_start();
 require_once 'conexion.php';
 ?>
-<?php
-if (isset($_GET['success'])) {
-    echo '<script>window.onload = function() { $("#exampleModal").modal("hide"); };</script>';
-} elseif (isset($_GET['error'])) {
-    $error_msg = isset($_GET['msg']) ? htmlspecialchars($_GET['msg']) : 'Error desconocido';
-    echo '<div class="alert alert-danger">Error: ' . $error_msg . '</div>';
-}
-?>
 
 <!-- Llamado del header -->
 <?php include __DIR__ . '/../../includes/header.php'; ?>
+
+<?php
+if (isset($_GET['deleted'])) {
+  $_SESSION['success'] = "Evento eliminado correctamente.";
+}
+if (isset($_GET['success'])) {
+  $_SESSION['success'] = "Evento guardado correctamente.";
+}
+if (isset($_GET['error'])) {
+  $_SESSION['error'] = isset($_GET['msg']) ? htmlspecialchars($_GET['msg']) : 'Ocurrió un error inesperado.';
+}
+
+include __DIR__ . '/../../includes/alerts.php';
+?>
  
   <?php
   include('conexion.php');
