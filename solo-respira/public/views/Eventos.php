@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'conexion.php';
+require_once __DIR__ . '/../../config/conexion.php';
 ?>
 
 <!-- Llamado del header -->
@@ -21,8 +21,8 @@ include __DIR__ . '/../../includes/alerts.php';
 ?>
  
   <?php
-  include('conexion.php');
-  
+  require_once __DIR__ . '/../../config/conexion.php';
+
     $SqlEventos   = ("SELECT * FROM eventoscalendar");
     $resulEventos = mysqli_query($conexion, $SqlEventos);
   
@@ -57,12 +57,12 @@ include __DIR__ . '/../../includes/alerts.php';
   ?>
 
 
-<script src ="js/jquery-3.0.0.min.js"> </script>
-<script src="js/popper.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script type="text/javascript" src="js/moment.min.js"></script>	
-<script type="text/javascript" src="js/fullcalendar.min.js"></script>
-<script src='locales/es.js'></script>
+<script src ="../assets/js/jquery-3.0.0.min.js"> </script>
+<script src="../assets/js/popper.min.js"></script>
+<script src="../assets/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../assets/js/moment.min.js"></script>	
+<script type="text/javascript" src="../assets/js/fullcalendar.min.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/locale/es.js'></script>
 
 <script type="text/javascript">
 $(document).ready(function() {
@@ -123,7 +123,7 @@ eventRender: function(event, element) {
 
      $.ajax({
             type: "POST",
-            url: 'deleteEvento.php',
+            url: '../../controllers/deleteEvento.php',
             data: {id:event._id},
             success: function(datos)
             {
@@ -147,11 +147,24 @@ eventDrop: function (event, delta) {
   var end = (event.end.format("DD-MM-YYYY"));
 
     $.ajax({
-        url: 'drag_drop_evento.php',
-        data: 'start=' + start + '&end=' + end + '&idEvento=' + idEvento,
         type: "POST",
-        success: function (response) {
-         // $("#respuesta").html(response);
+        url: '../../controllers/deleteEvento.php',
+        data: { id: event._id },
+        success: function(response) {
+            try {
+                const res = typeof response === "string" ? JSON.parse(response) : response;
+                if (res.success) {
+                    alert("Evento eliminado correctamente.");
+                } else {
+                    alert("Error al eliminar: " + res.error);
+                }
+            } catch (e) {
+                console.error("Error al interpretar la respuesta:", e);
+                alert("Respuesta inesperada del servidor.");
+            }
+        },
+        error: function(xhr) {
+            alert("Error en la solicitud: " + xhr.statusText);
         }
     });
 },

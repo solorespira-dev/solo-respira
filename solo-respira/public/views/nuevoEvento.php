@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . '/../../lib/auth.php';
-redirectIfNotAdmin(); // Solo admin puede acceder
+// redirectIfNotAdmin(); // Solo admin puede acceder
 
 require_once __DIR__ . '/../../config/conexion.php';
 

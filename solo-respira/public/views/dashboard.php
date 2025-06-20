@@ -34,8 +34,20 @@ $resultDonaciones = $queryDonaciones->get_result();
 $rowDonaciones = $resultDonaciones->fetch_assoc();
 $totalDonado = $rowDonaciones['total'] ?? 0;
 
-// Obtener próximo evento (si se desea)
-$evento = null; // Aquí se puede agregar lógica
+// Obtener próximo evento desde hoy
+$queryEvento = $conexion->prepare("SELECT * FROM eventoscalendar WHERE fecha_inicio >= CURDATE() ORDER BY fecha_inicio ASC LIMIT 1");
+$queryEvento->execute();
+$resultEvento = $queryEvento->get_result();
+$evento = $resultEvento->fetch_assoc();
+$queryEvento->close();
+
+// Obtener últimos 3 mensajes para el usuario
+$queryMensajes = $conexion->prepare("SELECT remitente, mensaje, fecha FROM mensajes WHERE email_destino = ? ORDER BY fecha DESC LIMIT 3");
+$queryMensajes->bind_param("s", $email);
+$queryMensajes->execute();
+$resultMensajes = $queryMensajes->get_result();
+$queryMensajes->close();
+
 
 ?>
 
@@ -140,6 +152,13 @@ $evento = null; // Aquí se puede agregar lógica
 <div class="content">
     <?php include __DIR__ . '/../../includes/alerts.php'; ?>
     <h2 class="text-primary">Bienvenido, <?php echo htmlspecialchars($nombre); ?>.</h2>
+    
+        <?php if ($_SESSION['usuario']['rol'] === 'admin'): ?>
+            <div class="alert alert-info mt-3">
+                Estás visualizando el panel como <strong>administrador</strong>. Puedes gestionar usuarios, eventos y más.
+                <br><a href="eventos_admin.php" class="btn btn-sm btn-outline-light mt-2">Ir a gestión de eventos</a>
+            </div>
+        <?php endif; ?>
 
     <div class="row mt-4">
         <div class="col-md-4">
@@ -178,8 +197,8 @@ $evento = null; // Aquí se puede agregar lógica
                         <div>
                             <div class="card-title text-muted">Próximo Evento</div>
                             <?php if ($evento): ?>
-                                <h4><?php echo date('d M', strtotime($evento['fecha'])); ?></h4>
-                                <small><?php echo htmlspecialchars($evento['nombre']); ?></small>
+                                <h4><?php echo date('d M', strtotime($evento['fecha_inicio'])); ?></h4>
+                                <small><?php echo htmlspecialchars($evento['nombre'] ?? $evento['evento']); ?></small>
                             <?php else: ?>
                                 <h4>---</h4>
                                 <small>Sin eventos próximos</small>

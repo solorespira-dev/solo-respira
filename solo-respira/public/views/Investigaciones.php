@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'conexion.php';
+require_once __DIR__ . '/../../config/conexion.php';
 
 $esAdmin = isset($_SESSION['rol']) && $_SESSION['rol'] === 'admin';
 $mensaje = "";
@@ -35,7 +35,7 @@ $resultado = $conexion->query("SELECT * FROM investigaciones ORDER BY fecha_publ
 ?>
 
 <!-- Llamado del header -->
-<?php include __DIR__ . '/includes/header.php'; ?>
+<?php include __DIR__ . '/../../includes/header.php'; ?>
 
 <div class="container mt-5">
 
@@ -84,5 +84,5 @@ $resultado = $conexion->query("SELECT * FROM investigaciones ORDER BY fecha_publ
 </div>
 
 <!-- Llamado del footer -->
-<?php include __DIR__ . '/includes/footer.php'; ?>
+<?php include __DIR__ . '/../../includes/footer.php'; ?>
 
