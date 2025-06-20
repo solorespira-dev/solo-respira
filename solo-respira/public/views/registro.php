@@ -1,15 +1,23 @@
 <?php
+session_start();
 require_once __DIR__ . '/../../config/conexion.php';
 
 $mensaje = '';
 
+// Si el usuario ya está logueado, lo redirigimos o destruimos la sesión según el flujo deseado
+if (isset($_SESSION['usuario'])) {
+    session_destroy(); // O redirigir: header("Location: dashboard.php"); exit;
+}
+
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $nombre = trim($_POST["nombre"]);
     $email = filter_var(trim($_POST["email"]), FILTER_VALIDATE_EMAIL);
-    $contraseña = password_hash($_POST["contraseña"], PASSWORD_DEFAULT);
-    $rol = $_POST["rol"];
+    $contraseñaPlano = $_POST["contraseña"];
+    $rol = isset($_SESSION['usuario']) && $_SESSION['usuario']['rol'] === 'admin'
+        ? $_POST["rol"]
+        : 'miembro';
 
-    if ($email && !empty($nombre) && !empty($_POST["contraseña"]) && !empty($rol)) {
+    if ($email && !empty($nombre) && !empty($contraseñaPlano)) {
         $stmt = $conexion->prepare("SELECT id FROM usuarios WHERE email = ?");
         $stmt->bind_param("s", $email);
         $stmt->execute();
@@ -19,8 +27,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $mensaje = "Este correo ya está registrado.";
         } else {
             $stmt->close();
+
+            $hash = password_hash($contraseñaPlano, PASSWORD_DEFAULT);
             $stmt = $conexion->prepare("INSERT INTO usuarios (nombre, email, contraseña, rol) VALUES (?, ?, ?, ?)");
-            $stmt->bind_param("ssss", $nombre, $email, $contraseña, $rol);
+            $stmt->bind_param("ssss", $nombre, $email, $hash, $rol);
 
             if ($stmt->execute()) {
                 header("Location: InicioSesion.php?registrado=1");
@@ -57,28 +67,33 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <?php endif; ?>
 
             <form method="POST" action="">
-                <div class="form-group">
+                <div class="form-group mb-3">
                     <label for="nombre">Nombre completo</label>
                     <input type="text" class="form-control" name="nombre" id="nombre" required>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group mb-3">
                     <label for="email">Correo electrónico</label>
                     <input type="email" class="form-control" name="email" id="email" required>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group mb-3">
                     <label for="contraseña">Contraseña</label>
                     <input type="password" class="form-control" name="contraseña" id="contraseña" required>
                 </div>
 
-                <div class="form-group">
-                    <label for="rol">Tipo de usuario</label>
-                    <select class="form-control" name="rol" id="rol" required>
-                        <option value="miembro">Miembro</option>
-                        <option value="admin">Administrador</option>
-                    </select>
-                </div>
+                <!-- Campo de rol solo visible si un admin está logueado -->
+                <?php if (isset($_SESSION['usuario']) && $_SESSION['usuario']['rol'] === 'admin'): ?>
+                    <div class="form-group mb-3">
+                        <label for="rol">Tipo de usuario</label>
+                        <select class="form-control" name="rol" id="rol" required>
+                            <option value="miembro">Miembro</option>
+                            <option value="admin">Administrador</option>
+                        </select>
+                    </div>
+                <?php else: ?>
+                    <input type="hidden" name="rol" value="miembro">
+                <?php endif; ?>
 
                 <button type="submit" class="btn btn-primary btn-block">Registrarse</button>
             </form>
@@ -91,4 +106,5 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 </div>
 
 <?php include __DIR__ . '/../../includes/footer.php'; ?>
+
 
