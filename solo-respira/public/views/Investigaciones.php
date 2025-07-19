@@ -7,7 +7,7 @@ $esAdmin = isset($_SESSION['rol']) && $_SESSION['rol'] === 'admin';
 $mensaje = "";
 
 // Carpeta de uploads (ruta absoluta)
-$uploadDir = __DIR__ . '/../uploads/';
+$uploadDir = __DIR__ . '/../uploads/Investigaciones/';
 if (!is_dir($uploadDir)) {
     mkdir($uploadDir, 0755, true);
 }
@@ -109,7 +109,7 @@ $resultado = $conexion->query("
         <div class="card h-100">
           <?php if ($fila['imagen']): ?>
             <img
-              src="../uploads/<?= htmlspecialchars($fila['imagen']) ?>"
+              src="../uploads/Investigaciones/<?= htmlspecialchars($fila['imagen']) ?>"
               class="card-img-top"
               alt="Imagen de <?= htmlspecialchars($fila['titulo']) ?>"
             >
