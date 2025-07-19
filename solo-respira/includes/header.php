@@ -14,10 +14,35 @@
   <!-- FontAwesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css">
   <!-- CSS Personalizado -->
-  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
   <link rel="stylesheet" href="../assets/css/fullcalendar.min.css">
   <link rel="stylesheet" href="../assets/css/style.css">
   <link rel="stylesheet" href="../assets/css/home.css">
+    <style>
+    /* Forzar tamaño del logo */
+    .navbar .navbar-brand img {
+      max-width: none   !important;
+      max-height: 140px  !important;
+      width: auto       !important;
+      height: auto      !important;
+    }
+    
+    .custom-navbar {
+      height: 160px;
+      padding: 0;
+    }
+    .custom-navbar .container,
+    .custom-navbar .navbar-collapse {
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
+    .custom-navbar .navbar-brand img {
+      max-height: 60px;
+      width: auto;
+    }
+  </style>
+
+  </style>
   <!-- Material Icons -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
@@ -25,7 +50,7 @@
 <body>
 
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg text-light bg-light text-uppercase shadow-sm custom-navbar">
+<nav class="navbar navbar-expand-lg text-light bg-light text-uppercase shadow-sm custom-navbar" style="padding: 2rem 0;">
   <div class="container">
     <a class="navbar-brand" href="index.php">
       <img src="../assets/images/LOGO SOLO RESPIRA.png" alt="Logo Solo Respira" class="img-logo">

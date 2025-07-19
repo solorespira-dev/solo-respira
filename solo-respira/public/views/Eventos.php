@@ -1,5 +1,8 @@
 <?php
 session_start();
+
+$esAdmin = isset($_SESSION['rol']) && $_SESSION['rol'] === 'admin';
+
 require_once __DIR__ . '/../../config/conexion.php';
 ?>
 
@@ -42,20 +45,30 @@ include __DIR__ . '/../../includes/alerts.php';
   
   
   
-  <div id="calendar"></div>
+  <div id="calendar" class="mb-5"></div>
   
-  <div class="row">
-    <div class="col text-center mt-3 mb-3">
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Nuevo Evento</button>
+  <?php if ($esAdmin): ?>
+    <div class="row">
+      <div class="col text-center mt-3 mb-3">
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+        >
+          Nuevo Evento
+        </button>
+      </div>
     </div>
-  </div>
-  </div>
 
-  <?php  
-    include('modalNuevoEvento.php');
-    include('modalUpdateEvento.php');
-  ?>
+    <?php include 'modalNuevoEvento.php'; ?>
+    <?php include 'modalUpdateEvento.php'; ?>
+  <?php endif; ?>
+</div>
 
+<script>
+  const IS_ADMIN = <?= $esAdmin ? 'true' : 'false' ?>;
+</script>
 
 <script src ="../assets/js/jquery-3.0.0.min.js"> </script>
 <script src="../assets/js/popper.min.js"></script>
@@ -77,13 +90,14 @@ $(document).ready(function() {
 
     defaultView: "month",
     navLinks: true, 
-    editable: true,
+    editable: IS_ADMIN,
     eventLimit: true, 
-    selectable: true,
+    selectable: IS_ADMIN,
     selectHelper: false,
 
 //Nuevo Evento
   select: function(start, end){
+      if (!IS_ADMIN) return;
       $("#exampleModal").modal();
       $("input[name=fecha_inicio]").val(start.format('DD-MM-YYYY'));
        
@@ -109,6 +123,7 @@ $(document).ready(function() {
 
 //Eliminar Evento
 eventRender: function(event, element) {
+    if (!IS_ADMIN) return;
     element
       .find(".fc-content")
       .prepend("<span id='btnCerrar'; class='closeon material-icons'>&#xe5cd;</span>");
@@ -141,7 +156,8 @@ eventRender: function(event, element) {
 
 
 //Moviendo Evento Drag - Drop
-eventDrop: function (event, delta) {
+eventDrop: function (event) {
+  if (!IS_ADMIN) return;
   var idEvento = event._id;
   var start = (event.start.format('DD-MM-YYYY'));
   var end = (event.end.format("DD-MM-YYYY"));
@@ -171,6 +187,7 @@ eventDrop: function (event, delta) {
 
 //Modificar Evento del Calendario 
 eventClick:function(event){
+    if (!IS_ADMIN) return;
     var idEvento = event._id;
     $('input[name=idEvento').val(idEvento);
     $('input[name=evento').val(event.title);

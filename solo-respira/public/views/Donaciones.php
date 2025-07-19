@@ -59,7 +59,7 @@ require_once __DIR__ . '/../../config/conexion.php';
   </nav>
   <!-- Fin Navbar -->
 <!-- Sección Hero -->
-<header class="hero-section" style="background-image: url('images/pexels-pixabay-236380.jpg');">
+<header class="hero-section" style="background-image: url('../assets/images/pexels-pixabay-236380.jpg');">
   <!-- Overlay -->
   <div class="hero-overlay"></div>
   <!-- Contenido del Hero -->

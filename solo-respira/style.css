@@ -1,346 +1,430 @@
 /* Fuentes */
+
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Nunito Sans', sans-serif; /* Fuente principal */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Nunito Sans', sans-serif;
+    /* Fuente principal */
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'PT Sans', sans-serif; /* Fuente secundaria para títulos */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'PT Sans', sans-serif;
+    /* Fuente secundaria para títulos */
 }
 
 .btn-personal {
-  background-color: #a5a726;
-  border: 2px solid #a5a726;
-  color: white;
-  font-weight: bold;
-  transition: background-color 0.3s ease, border-color 0.3s ease;
+    background-color: #a5a726;
+    border: 2px solid #a5a726;
+    color: white;
+    font-weight: bold;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .btn-personal:hover {
-  background-color: #cf3681;
-  border-color: #cf3681;
-  color: white;
+    background-color: #cf3681;
+    border-color: #cf3681;
+    color: white;
 }
 
+
 /* Colores personalizados */
+
 :root {
-  --color-principal: #cf3681; /* Rosa */
-  --color-secundario: #a5a726; /* Verde */
-  --color-terciario: #ffbd59; /* Amarillo */
-  --color-oscuro: #2b2b2b; /* Gris oscuro */
+    --color-principal: #cf3681;
+    /* Rosa */
+    --color-secundario: #a5a726;
+    /* Verde */
+    --color-terciario: #ffbd59;
+    /* Amarillo */
+    --color-oscuro: #2b2b2b;
+    /* Gris oscuro */
 }
+
 
 /* Estilos personalizados para el navbar */
 
 .custom-navbar .nav-link {
-  color: #000; /* Texto negro en el navbar */
-  font-weight: 500; /* Opcional: Aumentar el grosor de la fuente */
+    color: #000;
+    /* Texto negro en el navbar */
+    font-weight: 500;
+    /* Opcional: Aumentar el grosor de la fuente */
 }
 
 .custom-navbar .nav-link:hover {
-  color: var(--color-principal); /* Amarillo al hacer hover */
+    color: var(--color-principal);
+    /* Amarillo al hacer hover */
 }
 
+
 /* Ajustar el tamaño del logo */
+
 .img-logo {
-  max-width: 20px; /* Reducir el tamaño del logo */
-  height: auto;
+    /* En lugar de 20px pon algo así: */
+    max-width: 150px;
+    height: auto;
+    width: auto;
 }
 
 
 /* Botones */
+
 .btn {
-  background-color: var(--color-secundario); /* Verde */
-  border-color: var(--color-secundario);
-  color: #fff; /* Texto blanco en los botones */
+    background-color: var(--color-secundario);
+    /* Verde */
+    border-color: var(--color-secundario);
+    color: #fff;
+    /* Texto blanco en los botones */
 }
 
 .btn:hover {
-  background-color: var(--color-principal); /* Rosa al hacer hover */
-  border-color: var(--color-principal);
+    background-color: var(--color-principal);
+    /* Rosa al hacer hover */
+    border-color: var(--color-principal);
 }
 
+
 /* Sección Hero */
+
 .hero-section {
-  position: relative;
-  background-size: cover;
-  background-position: center;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: #fff;
-  overflow: hidden;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    overflow: hidden;
 }
 
 .hero-section .container {
-  position: relative;
-  z-index: 2;
+    position: relative;
+    z-index: 2;
 }
 
 .hero-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5); /* Overlay oscuro */
-  z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    /* Overlay oscuro */
+    z-index: 1;
 }
 
+
 /* Animación del dropdown */
+
 .dropdown-menu {
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  transform: translateY(10px);
-  opacity: 0;
-  display: block;
-  visibility: hidden;
-  pointer-events: none;
-  background-color: var(--color-oscuro); /* Fondo oscuro para el dropdown */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    transform: translateY(10px);
+    opacity: 0;
+    display: block;
+    visibility: hidden;
+    pointer-events: none;
+    background-color: var(--color-oscuro);
+    /* Fondo oscuro para el dropdown */
 }
 
 .nav-item.dropdown.show .dropdown-menu,
 .nav-item.dropdown:hover .dropdown-menu {
-  transform: translateY(0);
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
 }
+
 
 /* Estilos para el título "Nuestras Historias" */
+
 #historias h2 {
-  color: var(--color-principal); /* Color primario (#cf3681) */
+    color: var(--color-principal);
+    /* Color primario (#cf3681) */
 }
+
 
 /* Estilos para el título "Blog sobre Fibrosis Quística" */
+
 #blog h2 {
-  color: var(--color-principal); /* Color primario (#cf3681) */
+    color: var(--color-principal);
+    /* Color primario (#cf3681) */
 }
 
+
 /* Tarjetas del carrusel */
+
 .carousel .card {
-  border: none;
-  transition: transform 0.3s ease;
-  background-color: var(--color-blanco); /* Fondo oscuro para las tarjetas */
-  color: #000000; /* Texto blanco en las tarjetas */
+    border: none;
+    transition: transform 0.3s ease;
+    background-color: var(--color-blanco);
+    /* Fondo oscuro para las tarjetas */
+    color: #000000;
+    /* Texto blanco en las tarjetas */
 }
 
 .carousel .card:hover {
-  transform: translateY(-5px);
+    transform: translateY(-5px);
 }
 
+
 /* Sección Blog */
+
 #blog .card {
-  border: none;
-  transition: transform 0.3s ease;
-  background-color: var(--color-oscuro); /* Fondo oscuro para las tarjetas del blog */
-  color: #fff; /* Texto blanco en las tarjetas del blog */
+    border: none;
+    transition: transform 0.3s ease;
+    background-color: var(--color-oscuro);
+    /* Fondo oscuro para las tarjetas del blog */
+    color: #fff;
+    /* Texto blanco en las tarjetas del blog */
 }
 
 #blog .card:hover {
-  transform: translateY(-5px);
+    transform: translateY(-5px);
 }
 
+
 /* Footer */
+
 .footer {
-  background-color: #2b2b2b; /* Fondo oscuro para el footer */
-  color: #ccc; /* Texto gris claro en el footer */
+    background-color: #2b2b2b;
+    /* Fondo oscuro para el footer */
+    color: #ccc;
+    /* Texto gris claro en el footer */
 }
 
 
 /* Formulario de contacto */
 
 .container-1 {
-  display:grid;
-  grid-template-columns: repeat(2,50%);
-  padding:20px;
-  gap:10px;
-  width: 70%;
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    padding: 20px;
+    gap: 10px;
+    width: 70%;
 }
 
 .box-info {
-  color:#fff;
-  display:flex;
-  flex-direction: column;
-  gap:50px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
 }
 
-.box-info > h1 {
-  text-align: left;
+.box-info>h1 {
+    text-align: left;
 }
 
 .data {
-  display: flex;
-  flex-direction: column;
-  gap:15px
+    display: flex;
+    flex-direction: column;
+    gap: 15px
 }
 
-.data > p {
-  font-size: 1rem;
+.data>p {
+    font-size: 1rem;
 }
 
-.data > p > i {
-  color:#a5a726;
-  margin-right: 10px;
-  font-size:25px;
+.data>p>i {
+    color: #a5a726;
+    margin-right: 10px;
+    font-size: 25px;
 }
-
-
 
 .links {
-  display:flex;
-  gap:15px;
+    display: flex;
+    gap: 15px;
 }
 
-.links > a {
-  text-decoration: none;
-  width: 40px;
-  height: 40px;
-  background: #a5a726;
-  text-align: center;
-  transition: .1s;
+.links>a {
+    text-decoration: none;
+    width: 40px;
+    height: 40px;
+    background: #a5a726;
+    text-align: center;
+    transition: .1s;
 }
 
-.links > a > i {
-  color:#fff;
-  line-height: 40px;
-  font-size: 20px;
+.links>a>i {
+    color: #fff;
+    line-height: 40px;
+    font-size: 20px;
 }
 
 form {
-  display:flex;
-  flex-direction: column;
-  text-align: center;
-  gap:15px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
 }
 
 .input-box {
-  position:relative;
+    position: relative;
 }
 
-.input-box > input {
-  width: 100%;
-  height: 40px;
-  padding: 0 10px;
-  outline:none;
-  background: rgba(255 255 255 / .1);
-  border:3px solid transparent;
-  letter-spacing: 1px;
-  transition:.3s;
-  color:#fff;
-  
+.input-box>input {
+    width: 100%;
+    height: 40px;
+    padding: 0 10px;
+    outline: none;
+    background: rgba(255 255 255 / .1);
+    border: 3px solid transparent;
+    letter-spacing: 1px;
+    transition: .3s;
+    color: #fff;
 }
 
-.input-box > input::placeholder,
-.input-box > textarea::placeholder {
-  color:#ffffffb7;
-  
+.input-box>input::placeholder,
+.input-box>textarea::placeholder {
+    color: #ffffffb7;
 }
 
-.input-box > input:focus::placeholder,
-.input-box > textarea:focus::placeholder {
-  color:transparent;
+.input-box>input:focus::placeholder,
+.input-box>textarea:focus::placeholder {
+    color: transparent;
 }
 
-.input-box > input:focus,
-.input-box > textarea:focus {
-  border-bottom:3px solid #a5a726;
-  animation: shake .2s;
+.input-box>input:focus,
+.input-box>textarea:focus {
+    border-bottom: 3px solid #a5a726;
+    animation: shake .2s;
 }
 
-.input-box > textarea {
-  width: 100%;
-  height: 130px;
-  padding: 10px;
-  background: rgba(255 255 255 / .1);
-  border:3px solid transparent;
-  letter-spacing: 1px;
-  outline: none;
-  transition:.3s;
-  color:#fff;
-  letter-spacing: 1.5px;
+.input-box>textarea {
+    width: 100%;
+    height: 130px;
+    padding: 10px;
+    background: rgba(255 255 255 / .1);
+    border: 3px solid transparent;
+    letter-spacing: 1px;
+    outline: none;
+    transition: .3s;
+    color: #fff;
+    letter-spacing: 1.5px;
 }
 
-
-.input-box > i {
-  position:absolute;
-  top:50%;
-  transform: translateY(-50%);
-  right: 10px;
-  color:#fff;
-  transition: .3s;
+.input-box>i {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 10px;
+    color: #fff;
+    transition: .3s;
 }
 
-.input-box > input:focus ~ i {
-  color:#a5a726;
+.input-box>input:focus~i {
+    color: #a5a726;
 }
 
-form > button {
-  width: 100%;
-  padding: 10px;
-  outline: none;
-  background: #a5a726;
-  color:#fff;
-  border:none;
-  transition: .1s;
-  cursor: pointer;
-  font-size: 1rem;
+form>button {
+    width: 100%;
+    padding: 10px;
+    outline: none;
+    background: #a5a726;
+    color: #fff;
+    border: none;
+    transition: .1s;
+    cursor: pointer;
+    font-size: 1rem;
 }
 
-form > button:hover,
-.links > a:hover {
-  background: #cf3681;
+form>button:hover,
+.links>a:hover {
+    background: #cf3681;
 }
 
-@keyframes shake { 
-  0%, 100% {transform: translateX(0);} 
-  10%, 30%, 50%, 70%, 90% {transform: translateX(-10px);} 
-  20%, 40%, 60%, 80% {transform: translateX(10px);} 
+@keyframes shake {
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
+        transform: translateX(-10px);
+    }
+    20%,
+    40%,
+    60%,
+    80% {
+        transform: translateX(10px);
+    }
 }
-
 
 @media screen and (max-width:600px) {
-  .container {
-      width: 95%;
-      display: flex;
-      flex-direction: column;
-      gap:20px;
-  }
-
-  .box-info {
-      gap:15px;
-  }
-
-  .box-info > h1 {
-      font-size: 1.5rem;
-  }
+    .container {
+        width: 95%;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    .box-info {
+        gap: 15px;
+    }
+    .box-info>h1 {
+        font-size: 1.5rem;
+    }
 }
+
+
 /* Animación de entrada del modal */
+
 .modal.fade .modal-dialog {
-  transform: translateY(-50px);
-  transition: transform 0.3s ease-out;
+    transform: translateY(-50px);
+    transition: transform 0.3s ease-out;
 }
 
-.modal-header{
-  background-color: #a5a726;
+.modal-header {
+    background-color: #a5a726;
 }
+
 .modal.show .modal-dialog {
-  transform: translateY(0);
+    transform: translateY(0);
 }
+
 
 /* Estilo para el icono de confirmación */
+
 #confirmacionModal .fa-check-circle {
-  animation: bounce 0.6s;
+    animation: bounce 0.6s;
 }
 
 @keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
-  40% {transform: translateY(-20px);}
-  60% {transform: translateY(-10px);}
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-20px);
+    }
+    60% {
+        transform: translateY(-10px);
+    }
 }
+
 .is-invalid {
-  border-color: #dc3545 !important;
+    border-color: #dc3545 !important;
+}
+
+
+/* Header > logo */
+
+.img-logo {
+    /* Limita la altura en lugar del ancho */
+    max-height: 60px !important;
+    width: auto !important;
+    /* Quita cualquier max-width previo */
+    max-width: none !important;
 }

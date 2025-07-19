@@ -1,7 +1,13 @@
 <?php
-require_once __DIR__ . '/../../lib/auth.php';
-// redirectIfNotAdmin(); // Solo admin puede acceder
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
+if (! isset($_SESSION['rol']) || $_SESSION['rol'] !== 'admin') {
+    // si no es admin, lo mandas al index de usuario normal
+    header('Location: index.php');
+    exit;
+}
 require_once __DIR__ . '/../../config/conexion.php';
 
 // Configuración de idioma (opcional para fechas)

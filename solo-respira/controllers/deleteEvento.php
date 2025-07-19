@@ -1,10 +1,14 @@
 <?php
-require_once __DIR__ . '/../lib/auth.php';
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
-// Evitar redirección si se llama por AJAX
-if (!isAdmin()) {
+if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'admin') {
     http_response_code(403);
-    echo json_encode(['success' => false, 'error' => 'No autorizado']);
+    echo json_encode([
+        'success' => false,
+        'error'   => 'No autorizado'
+    ]);
     exit;
 }
 

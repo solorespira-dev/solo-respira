@@ -8,7 +8,7 @@ require_once __DIR__ . '/../../config/conexion.php';
 
 
   <!-- Sección Hero -->
-  <header class="hero-section" style="background-image: url('images/pexels-pixabay-236380.jpg'); position: relative;">
+  <header class="hero-section" style="background-image: url('../assets/images/pexels-pixabay-236380.jpg'); position: relative;">
     <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.042); z-index: 1;"></div>
     <div class="container-1" style="position: relative; z-index: 2;">
         <div class="box-info">
