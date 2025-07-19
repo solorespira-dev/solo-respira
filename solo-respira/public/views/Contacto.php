@@ -21,22 +21,22 @@ require_once __DIR__ . '/../../config/conexion.php';
             <div class="links">
                 <a href="#"><i class="fab fa-facebook"></i></a>
                 <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
                 <a href="#"><i class="fab fa-linkedin-in"></i></a>
             </div>
         </div>
         <form action="https://formsubmit.co/705a130deea5a962c38bfa4a3c12b9d9" method="POST">
             <div class="input-box">
                 <input type="text" name="name" required placeholder="Nombre y apellido">
-                <i class="fas fa-user"></i>
+                <!-- <i class="fas fa-user"></i> -->
             </div>
             <div class="input-box">
                 <input type="email" required name="email" placeholder="Correo electrónico">
-                <i class="fas fa-envelope"></i>
+                <!-- <i class="fas fa-envelope"></i> -->
             </div>
             <div class="input-box">
                 <input type="text" name="subject" placeholder="Asunto">
-                <i class="fas fa-pen"></i>
+                <!-- <i class="fas fa-pen"></i> -->
             </div>
             <div class="input-box">
                 <textarea name="comments" placeholder="Escribe tu mensaje..."></textarea>

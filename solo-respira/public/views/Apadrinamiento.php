@@ -5,6 +5,17 @@ require_once __DIR__ . '/../../config/conexion.php';
 // Flag admin (si luego quieres ocultar botones)
 $esAdmin = isset($_SESSION['rol']) && $_SESSION['rol']==='admin';
 
+/**
+ * Devuelve un texto truncado a $longitud caracteres, añadiendo “…”
+ */
+function str_truncate(string $texto, int $longitud = 80): string {
+    $texto = trim($texto);
+    if (mb_strlen($texto) <= $longitud) {
+        return $texto;
+    }
+    return mb_substr($texto, 0, $longitud) . '…';
+}
+
 // 1) Cargar todos los apadrinados
 $sql = "SELECT * FROM apadrinados";
 $res = $conexion->query($sql);
@@ -93,6 +104,10 @@ $res = $conexion->query($sql);
   <h2 class="text-center mb-4 display-4">Nuestros Pacientes</h2>
   <div class="row g-4">
     <?php while ($p = $res->fetch_assoc()): ?>
+      <?php
+        // Sanear y truncar descripción
+        $preview = htmlspecialchars(str_truncate($p['descripcion'], 80));
+      ?>
       <div class="col-12 col-md-6 col-lg-4 col-xl-3 d-flex">
         <div class="paciente-card w-100">
           <div class="paciente-img-container">
@@ -105,8 +120,8 @@ $res = $conexion->query($sql);
           <div class="paciente-body">
             <div class="paciente-info">
               <h3 class="h5 mb-3"><?= htmlspecialchars($p['nombre']) ?></h3>
-              <p class="text-muted"><?= htmlspecialchars($p['edad']) ?>.
-                 <?= htmlspecialchars($p['descripcion']) ?></p>
+              <p class="text-muted"><?= htmlspecialchars($p['edad']) ?> años.
+                 <?= $preview ?></p>
             </div>
             <div class="paciente-buttons">
               <button
@@ -115,7 +130,15 @@ $res = $conexion->query($sql);
                 data-bs-target="#<?= htmlspecialchars($p['modal_id']) ?>"
               >
                 Detalles
-              </button>
+              </button> 
+
+              <!-- Temporal: redirigir a Contacto.php en lugar de abrir modal -->
+              <a href="Contacto.php" class="btn btn-primary">
+                <i class="fas fa-hands-helping me-2"></i>Apadrinar
+              </a>
+
+              <!--Temporal: contener funcionalidad de abrir modal -->
+              <!--
               <button
                 class="btn"
                 data-bs-toggle="modal"
@@ -123,7 +146,7 @@ $res = $conexion->query($sql);
                 data-paciente="<?= htmlspecialchars($p['nombre']) ?>"
               >
                 <i class="fas fa-hands-helping me-2"></i>Apadrinar
-              </button>
+              </button> -->
             </div>
                         <!-- BORRAR SOLO ADMIN -->
             <?php if ($esAdmin): ?>
@@ -170,7 +193,7 @@ while ($p = $res->fetch_assoc()):
                 alt="<?= htmlspecialchars($p['nombre']) ?>"
               >
               <h3 class="h4"><?= htmlspecialchars($p['nombre']) ?></h3>
-              <p class="text-muted"><?= htmlspecialchars($p['edad']) ?></p>
+              <p class="text-muted"><?= htmlspecialchars($p['edad']) ?> años</p>
             </div>
             <div class="col-md-7">
               <!-- Aquí necesitarás más campos en la tabla para diagnóstico, etc. -->
