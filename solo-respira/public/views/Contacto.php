@@ -19,10 +19,41 @@ require_once __DIR__ . '/../../config/conexion.php';
                 <p><i class="fas fa-phone"></i> +58 414 460 3879</p>
             </div>
             <div class="links">
-                <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
+              <a
+                href="https://www.facebook.com/fundacionsolorespira"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i class="fab fa-facebook"></i>
+              </a>
+              <a
+                href="https://www.instagram.com/fundacionsolorespira?igsh=MW4yN21qdnN6cDNxaA=="
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a
+                href="https://youtube.com/@fundacionsolorespira?si=zLKrvh6C0VIe-GPr"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i class="fab fa-youtube"></i>
+              </a>
+              <a
+                href="https://wa.me/qr/TFTPZVV5GDCWM1"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i class="fab fa-whatsapp"></i>
+              </a>
+
+                <!-- Enlaces provisionales: X y LinkedIn--> 
+                <!--
                 <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
-                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a> 
+                -->
+
             </div>
         </div>
         <form action="https://formsubmit.co/705a130deea5a962c38bfa4a3c12b9d9" method="POST">
