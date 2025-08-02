@@ -83,7 +83,7 @@ Solo Respira is a web portal aimed at:
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/solorespira-dev/solo-respira/tree/main
+git clone https://github.com/solorespira-dev/solo-respira
 cd solo-respira
 ```
 
