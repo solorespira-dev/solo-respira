@@ -17,18 +17,14 @@ desktop.ini
 *.swp
 
 # Archivos PHP sensibles o duplicados
-/config/conexion.local.php
-/config/conexion.remoto.php
+/solo-respira/config/conexion.local.php
+/solo-respira/config/conexion.remoto.php
 .env
 *.env
 
-# Ignora todo lo sensible de config excepto lo que sí usamos
-config/conexion.*.php
-!config/conexion.php
-
 # Archivos de sesión o subida de usuarios
-/public/assets/uploads/*
-!/public/assets/uploads/.gitkeep
+/solo-respira/public/assets/uploads/*
+!/solo-respira/public/uploads/.gitkeep
 
 # Archivos generados o innecesarios para el repo
 node_modules/
