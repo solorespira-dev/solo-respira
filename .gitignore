@@ -27,8 +27,8 @@ config/conexion.*.php
 !config/conexion.php
 
 # Archivos de sesión o subida de usuarios
-/public/uploads/*
-!public/uploads/.gitkeep
+/public/assets/uploads/*
+!/public/assets/uploads/.gitkeep
 
 # Archivos generados o innecesarios para el repo
 node_modules/
