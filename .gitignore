@@ -1,0 +1,59 @@
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# Entornos locales
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Archivos temporales y de desarrollo
+*.log
+*.bak
+*.tmp
+*.swp
+
+# Archivos PHP sensibles o duplicados
+/config/conexion.local.php
+/config/conexion.remoto.php
+.env
+*.env
+
+# Ignora todo lo sensible de config excepto lo que sí usamos
+config/conexion.*.php
+!config/conexion.php
+
+# Archivos de sesión o subida de usuarios
+/public/uploads/*
+!public/uploads/.gitkeep
+
+# Archivos generados o innecesarios para el repo
+node_modules/
+vendor/
+composer.lock
+package-lock.json
+
+# Archivos de backup automáticos
+*~
+*.old
+*.orig
+*.save
+
+# Evitar PHPStorm / IDEs y carpetas ocultas
+*.iml
+*.class
+*.pyc
+*.db
+*.sqlite3
+*.zip
+
+# Evitar claves SSH, base de datos, y datos locales
+*.pem
+*.sql
+*.key
+*.crt
+*.csr
+*.csv
