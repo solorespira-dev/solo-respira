@@ -2,6 +2,8 @@
 
 Repository for the Solo Respira website, designed to share information about cystic fibrosis, manage events, publish research, and facilitate patient sponsorship.
 
+Developed by Alfonso Gonzalez for the Solo Respira Foundation
+
 ---
 
 ## Table of Contents
